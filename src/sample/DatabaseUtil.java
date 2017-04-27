@@ -493,7 +493,7 @@ public class DatabaseUtil {
         return searchAlcoholTable(query);
     }
     public List<AlcoholData> searchAlcoholContent(double alcCont) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.ALC_CONTENT = " + alcCont;
+        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.ALCH_CONTENT = " + alcCont;
 
         return searchAlcoholTable(query);
     }
