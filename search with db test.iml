@@ -23,7 +23,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://D:/Program Files (x86)/Java/JDK 8u60/db/lib" />
+          <root url="jar://$MODULE_DIR$/../../../jfoenix.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
