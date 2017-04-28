@@ -36,6 +36,12 @@ public class ReviseAppController {
 
     @FXML private TextField myFilePath1;
     @FXML private TextField form;
+
+    @FXML private TextArea ManuComment;
+    @FXML private TextArea AppComment;
+    @FXML private TextArea AlcoComment;
+    @FXML private TextArea LabelComment;
+
     @FXML private ImageView image;
     @FXML private JFXTextField RepID;
     @FXML private JFXTextField PlantReg;

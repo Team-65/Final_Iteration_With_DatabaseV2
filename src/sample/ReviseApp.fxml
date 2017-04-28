@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReviseAppController">
+<ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="933.0" prefWidth="1200.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReviseAppController">
    <content>
       <AnchorPane prefHeight="3284.0" prefWidth="1200.0">
          <children>
@@ -143,7 +143,7 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <GridPane layoutX="51.0" layoutY="47.0" prefHeight="132.0" prefWidth="852.0">
+                        <GridPane layoutX="51.0" layoutY="47.0" prefHeight="132.0" prefWidth="799.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
@@ -166,7 +166,7 @@
                                     <Label layoutX="662.0" layoutY="4.0" prefHeight="21.0" prefWidth="104.0" text="(Fill in Amount)" />
                                  </children>
                               </Pane>
-                              <Pane prefHeight="33.0" prefWidth="943.0" GridPane.rowIndex="1">
+                              <Pane prefHeight="33.0" prefWidth="794.0" GridPane.rowIndex="1">
                                  <children>
                                     <TextField fx:id="type2Box" layoutX="507.0" layoutY="1.0" prefHeight="31.0" prefWidth="50.0" />
                                     <Label layoutX="422.0" layoutY="4.0" prefHeight="21.0" prefWidth="85.0" text="For sale in" />
@@ -348,6 +348,58 @@
                <effect>
                   <DropShadow />
                </effect>
+            </GridPane>
+            <GridPane fx:id="ManuPane" layoutX="1032.0" layoutY="253.0" prefHeight="153.0" prefWidth="145.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="106.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="37.0" prefWidth="145.0" text="Manufracture Info Comment Section" wrapText="true" />
+                  <TextArea fx:id="ManuComment" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane fx:id="AppPane" layoutX="1032.0" layoutY="414.0" prefHeight="153.0" prefWidth="145.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="106.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="37.0" prefWidth="145.0" text="Applicant Info Comment Section" wrapText="true" />
+                  <TextArea fx:id="AppComment" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="1032.0" layoutY="579.0" prefHeight="153.0" prefWidth="145.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="106.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="37.0" prefWidth="145.0" text="Alcohol Info Comment Section" wrapText="true" />
+                  <TextArea fx:id="AlcoComment" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane fx:id="LabelPane" layoutX="1032.0" layoutY="747.0" prefHeight="153.0" prefWidth="145.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="106.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="37.0" prefWidth="145.0" text="Label Comment Section" wrapText="true" />
+                  <TextArea fx:id="LabelComment" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+               </children>
             </GridPane>
          </children>
       </AnchorPane>

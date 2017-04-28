@@ -466,34 +466,34 @@ public class DatabaseUtil {
 
     // Code used to search Alcohol table based on alcohol type
     public List<AlcoholData> searchAlcoholWithType(int alcoholType) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.ALCOHOL_TYPE = " + alcoholType;
+        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.ALCOHOL_TYPE = " + alcoholType + " AND STATUS = 'APPROVED'";
 
         return searchAlcoholTable(query);
     }
 
     // Code used to search Alcohol table based on brand name. Uses partial search
     public List<AlcoholData> searchAlcoholBrand(String brandName) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE UPPER(ALCOHOL.BRAND_NAME) LIKE UPPER('%" + brandName + "%')";
+        String query = "SELECT * FROM ALCOHOL WHERE UPPER(ALCOHOL.BRAND_NAME) LIKE UPPER('%" + brandName + "%')  AND STATUS = 'APPROVED'";
 
         return searchAlcoholTable(query);
     }
     public List<AlcoholData> searchAlcoholWithID(int number) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.AID = " + number;
+        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.AID = " + number + " AND STATUS = 'APPROVED'";
 
         return searchAlcoholTable(query);
     }
     public List<AlcoholData> searchAlcoholName(String name) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE UPPER(ALCOHOL.NAME) LIKE UPPER('%" + name + "%')";
+        String query = "SELECT * FROM ALCOHOL WHERE UPPER(ALCOHOL.NAME) LIKE UPPER('%" + name + "%')  AND STATUS = 'APPROVED'";
 
         return searchAlcoholTable(query);
     }
     public List<AlcoholData> searchAlcoholAppellation(String appellation) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE UPPER(ALCOHOL.APPELLATION) LIKE UPPER('%" + appellation + "%')";
+        String query = "SELECT * FROM ALCOHOL WHERE UPPER(ALCOHOL.APPELLATION) LIKE UPPER('%" + appellation + "%') AND STATUS = 'APPROVED'";
 
         return searchAlcoholTable(query);
     }
     public List<AlcoholData> searchAlcoholContent(double alcCont) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.ALCH_CONTENT = " + alcCont;
+        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.ALCH_CONTENT = " + alcCont + " AND STATUS = 'APPROVED'";
 
         return searchAlcoholTable(query);
     }
@@ -501,16 +501,16 @@ public class DatabaseUtil {
     public List<AlcoholData> searchAlcoholByDate(java.sql.Date date, String BEFORE_OR_AFTER) throws SQLException{
         String query = "";
         if(BEFORE_OR_AFTER.equals("AFTER")){
-            query = "SELECT * FROM ALCOHOL WHERE '" + date + "' <= ALCOHOL.DATE_APPROVED";
+            query = "SELECT * FROM ALCOHOL WHERE '" + date + "' <= ALCOHOL.DATE_APPROVED  AND STATUS = 'APPROVED'";
         }else if(BEFORE_OR_AFTER.equals("BEFORE")){
-            query = "SELECT * FROM ALCOHOL WHERE '" + date + "' >= ALCOHOL.DATE_APPROVED";
+            query = "SELECT * FROM ALCOHOL WHERE '" + date + "' >= ALCOHOL.DATE_APPROVED  AND STATUS = 'APPROVED'";
         }
 
         return searchAlcoholTable(query);
     }
 
     public List<AlcoholData> searchAlcoholByDate(java.sql.Date startDate, java.sql.Date endDate) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE '" + startDate + "' <= ALCOHOL.DATE_APPROVED AND '" + endDate+ "' >= '2013-01-09'";
+        String query = "SELECT * FROM ALCOHOL WHERE '" + startDate + "' <= ALCOHOL.DATE_APPROVED AND '" + endDate+ "' >= '2013-01-09'" +  "AND STATUS = 'APPROVED'";
 
         return searchAlcoholTable(query);
     }
@@ -774,7 +774,7 @@ public class DatabaseUtil {
         //int GOVID = getAccountAid(ReviewerUsername);
 
         //get comments
-        String comments = commentsField.getText();
+        //String comments = commentsField.getText();
 
 /*
         int statusInInteger;
@@ -1081,14 +1081,15 @@ public class DatabaseUtil {
 
         //Should give asc db of govid of government works id and the number of forms they have assigned to themrset = stm.executeQuery(sql);
 
-       /* int occ;
+        int occ;
         while(rset.next()){
             GOVID = rset.getInt("GOVID");
             occ = rset.getInt("CNT");
 
             System.out.println("Gov ID: " + GOVID + "Occurences: " + occ);
         }
-*/
+
+        /*
         if(rset.next()){
             while ((rset.getInt("GOVID") == 0)){
                 rset.next();
@@ -1099,7 +1100,7 @@ public class DatabaseUtil {
             screenUtil.createAlertBox("Add a Government Official account to the system",
                     "There are no government officials registered on the system. Therefore you cannot add a form because no one will review them.");
         }
-
+*/
         return GOVID;
     }
 

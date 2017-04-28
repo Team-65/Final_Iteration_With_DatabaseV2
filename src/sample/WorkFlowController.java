@@ -76,9 +76,9 @@ public class WorkFlowController {
                 alcoholTypeColumn.setCellValueFactory(new PropertyValueFactory<>("AlcoholType"));
         }
         ttbIDColumn.setCellValueFactory(new PropertyValueFactory<>("TtbID"));
-        fancifulNameColumn.setCellValueFactory(new PropertyValueFactory<>("FancyName"));
-        brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("Brand_name"));
-        submissionDateColumn.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        fancifulNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        brandNameColumn.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+        submissionDateColumn.setCellValueFactory(new PropertyValueFactory<>("submittedDate"));
         inboxTable.setItems(this.getObservableFormsList());
         inboxTable.getColumns().addAll(ttbIDColumn, fancifulNameColumn, brandNameColumn, alcoholTypeColumn, submissionDateColumn);
     }
