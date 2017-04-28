@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import java.util.Random;
+
 /**
  * Set of functions for interacting with the database.
  */
@@ -1065,24 +1067,38 @@ public class DatabaseUtil {
 
         int GOVID = 0;
         String status = "";
-
+        int counter = 0;
         // CHECK IF ALL GOVERNMENT OFFICIALS ARE ASSIGNED TO A FORM, IF NOT ASSIGNS FORMS TO ONES WHICH DONT HAVE A FORM
         for(Account account: searchAccountWithUserType(1)){
+            int countAccepted = 0;
+            int countAssigned = 0;
+            int countWork = 0;
+            counter++;
+            //Check if gov agent has ever been assigned to a form
             if(!containsInt("FORM", "GOVID", getAccountAid(account.getUsername()))){
                 GOVID = getAccountAid(account.getUsername());
                 return GOVID;
-            }else{
-                String haveWork = "SELECT STATUS FROM FORM WHERE GOVID = " + getAccountAid(account.getUsername());
+            }else {
+                // Find the gov agent that did all their work and now have nothing to do
+                String haveWork = "SELECT * FROM FORM WHERE GOVID = " + getAccountAid(account.getUsername());
                 rset = stmt.executeQuery(haveWork);
-                if(rset.next()){
-                    status = rset.getString("STATUS");
+                while (rset.next()) {
+                    if (rset.getString("STATUS").equals("ACCEPTED")) {
+                        countAccepted++;
+                        countWork++;
+                    }
+                    if (rset.getString("STATUS").equals("ASSIGNED")) {
+                        countAssigned++;
+                        countWork++;
+                    }
                 }
-                if(status.equals("ACCEPTED") || status.equals("REJECTED")){
+                if (countAccepted == countWork && countAssigned == 0) {
                     GOVID = getAccountAid(account.getUsername());
                     return GOVID;
                 }
             }
         }
+
         //NEED TO FIGURE OUT HOW TO FIND THE ACCOUNT WITH THE MINIMUM AMOUNT OF TIMES THE FORMS REFERENCE IT
         String query = "SELECT GOVID, SUM(CNT) AS CNT\n" +
                 "FROM\n" +
@@ -1102,7 +1118,8 @@ public class DatabaseUtil {
             GOVID = rset.getInt("GOVID");
             occ = rset.getInt("CNT");
 
-            System.out.println("Gov ID: " + GOVID + "Occurences: " + occ);
+            System.out.println("Gov ID: " + GOVID + " Occurences: " + occ);
+            return GOVID;
         }
 
         /*
