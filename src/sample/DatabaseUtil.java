@@ -478,7 +478,7 @@ public class DatabaseUtil {
         return searchAlcoholTable(query);
     }
     public List<AlcoholData> searchAlcoholWithID(int number) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.AID = " + number + " AND STATUS = 'APPROVED'";
+        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.AID = " + number ;
 
         return searchAlcoholTable(query);
     }
@@ -1113,7 +1113,7 @@ public class DatabaseUtil {
         String query = "UPDATE FORM SET FORM.STATUS = 'ASSIGNED', FORM.GOVID = " + govid + " WHERE TTBID = '"+ unAssignedForm.getTtbID()+ "'";
 
 
-        resultCount = stmt.executeUpdate(query);
+        stmt.executeUpdate(query);
 
     }
 
