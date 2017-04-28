@@ -1059,12 +1059,23 @@ public class DatabaseUtil {
         stmt = conn.createStatement();
 
         int GOVID = 0;
+        String status = "";
 
         // CHECK IF ALL GOVERNMENT OFFICIALS ARE ASSIGNED TO A FORM, IF NOT ASSIGNS FORMS TO ONES WHICH DONT HAVE A FORM
         for(Account account: searchAccountWithUserType(1)){
             if(!containsInt("FORM", "GOVID", getAccountAid(account.getUsername()))){
                 GOVID = getAccountAid(account.getUsername());
                 return GOVID;
+            }else{
+                String haveWork = "SELECT STATUS FROM FORM WHERE GOVID = " + getAccountAid(account.getUsername());
+                rset = stmt.executeQuery(haveWork);
+                if(rset.next()){
+                    status = rset.getString("STATUS");
+                }
+                if(status.equals("ACCEPTED") || status.equals("REJECTED")){
+                    GOVID = getAccountAid(account.getUsername());
+                    return GOVID;
+                }
             }
         }
         //NEED TO FIGURE OUT HOW TO FIND THE ACCOUNT WITH THE MINIMUM AMOUNT OF TIMES THE FORMS REFERENCE IT
