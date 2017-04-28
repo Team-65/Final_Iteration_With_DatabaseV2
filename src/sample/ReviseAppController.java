@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -37,10 +39,8 @@ public class ReviseAppController {
     @FXML private TextField myFilePath1;
     @FXML private TextField form;
 
-    @FXML private TextArea ManuComment;
-    @FXML private TextArea AppComment;
-    @FXML private TextArea AlcoComment;
-    @FXML private TextArea LabelComment;
+    @FXML private TextArea Comment;
+
 
     @FXML private ImageView image;
     @FXML private JFXTextField RepID;
@@ -102,6 +102,8 @@ public class ReviseAppController {
      * Initializes the Application Revision Screen.
      */
     public void initialize()throws SQLException{
+
+
         formsObservableList = FXCollections.observableArrayList();
         formsFound = databaseUtil.searchFormWithAid(databaseUtil.getAccountAid(accountsUtil.getUsername()));
 
