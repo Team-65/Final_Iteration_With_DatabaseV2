@@ -29,7 +29,6 @@ public class ApplicationData{
      * @param ttbID Int representing the ID of a form.
      * @param repid Representative ID.
      * @param address Manufacturer's address.
-     * @param formula Formula for the alcohol.
      * @param permitNo Number of the permit.
      * @param phoneNumber Phone number for the manufacturer.
      * @param email Manufacturer's email address.
@@ -156,7 +155,7 @@ public class ApplicationData{
     }
 
     public AlcoholData getAssociatedAlcoholData()throws SQLException{
-        alcoholData = databaseUtil.searchAlcoholWithID(getAssociatedAlchID()).get(0);
+        alcoholData = databaseUtil.searchAlcoholID(getAssociatedAlchID()).get(0);
         return alcoholData;
     }
 

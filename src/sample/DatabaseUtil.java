@@ -478,7 +478,12 @@ public class DatabaseUtil {
         return searchAlcoholTable(query);
     }
     public List<AlcoholData> searchAlcoholWithID(int number) throws SQLException{
-        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.AID = " + number ;
+        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.AID = " + number + " AND STATUS = 'APPROVED'";
+
+        return searchAlcoholTable(query);
+    }
+    public List<AlcoholData> searchAlcoholID(int number) throws SQLException{
+        String query = "SELECT * FROM ALCOHOL WHERE ALCOHOL.AID = " + number;
 
         return searchAlcoholTable(query);
     }
@@ -1475,7 +1480,7 @@ public class DatabaseUtil {
         ResultSet rs =  getForms.executeQuery();
 
         while(rs.next()){
-            AlcoholData currentDate = searchAlcoholWithID(rs.getInt("ALCHID")).get(0);
+            AlcoholData currentDate = searchAlcoholID(rs.getInt("ALCHID")).get(0);
             list.add(new TreeItem<TItem>(new FormItem(currentDate.getName(), rs.getString("TTBID"),currentDate.getBrandName())));
         }
 
